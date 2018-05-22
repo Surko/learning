@@ -1,0 +1,263 @@
+\documentclass[serif,mathserif]{beamer}
+\usepackage{amsmath, amsfonts, epsfig, xspace}
+\usepackage{algorithm,algorithmic}
+\usepackage{pstricks,pst-node}
+\usepackage{multimedia}
+\usepackage[normal,tight,center]{subfigure}
+\setlength{\subfigcapskip}{-.5em}
+\usepackage{beamerthemesplit}
+\usepackage{tabularx}
+
+\usepackage[english,czech]{babel}
+\usepackage[T1]{fontenc}
+
+%% Použité kódování znaků: obvykle latin2, cp1250 nebo utf8:
+\usepackage[utf8]{inputenc}
+
+\usetheme{lankton-keynote}
+
+\author[Lukáš Šurín]{Lukáš Šurín}
+
+\title[Prehľad platformy\hspace{2em}\insertframenumber/\inserttotalframenumber]{iOS - Prehľad platformy }
+
+\date{June 2017}
+
+\institute{Profinit}
+
+\newcolumntype{E}[1]{>{\centering\hsize=#1\hsize\arraybackslash}
+X}%
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+  \frametitle{Outline}
+  Prehľad toho čo nás v prezentácii čaká\pause
+  \begin{itemize}
+  \item Oboznámenie s iOS platformou\pause
+   \begin{itemize}
+      \item História\pause
+      \item Architektúra\pause
+      \item Rozpad aplikácie\pause
+      \item Swift vs ObjectiveC\pause
+  \end{itemize}
+  \item Príprava na vývoj pre iOS\pause
+  \begin{itemize}
+      \item XCode\pause
+      \item Emulátor
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - História}
+  \begin{itemize}
+	\item 1985 - založenie firmy NeXT \pause
+	\item 1988 - licencovanie Objective-C - stáva sa proprietárnym jazykom\pause
+	\item 1989 - NeXTSTEP OS\pause
+	\item 1996 - Apple skupuje NeXT\pause
+	\item 2001 - Mac OS X (založený na NeXTSTEP)\pause
+	\item 2007 - vzniká iPhone OS (založený na Mac OS X)\pause
+	\item 2008 - iPhone OS SDK, AppStore\pause
+	\item 2010 - iPad\pause
+	\item 2010 - iPhone OS premenovaný na iOS\pause
+	\item 2014 - WWDC = uvítanie jazyka SWIFT
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - História}
+  \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/1/history1.png}
+  \end{figure}
+  \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/1/history2.png}
+  \end{figure}
+  	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Under Hood - Architektúra}
+  \begin{itemize}
+	\item platforma postavená nad systémom Darwin - open source OS - hybridná architektúra\pause
+	\item takže UNIX
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Under Hood - Architektúra}
+  \begin{figure}[h]
+	\includegraphics[width=0.75\textwidth]{resources/1/unix.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Under Hood - Architektúra}
+  \begin{itemize}
+	\item platforma postavená nad systémom Darwin - open source OS - hybridná architektúra
+	\item takže UNIX
+	\item podobné s architektúrou Mac OS X\pause
+	\item iOS slúži ako prepojenie aplikácii s hardware\pause
+	\item beží na ARM procesoroch\pause
+	\item v minulosti 32-bit, teraz 64-bit\pause
+	\item má 4 abstraktné vrstvy
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Architektúra}
+  \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/1/architecture1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Rozpad aplikácie}
+  \begin{itemize}
+	\item má 4 abstraktné vrstvy\pause
+	\begin{itemize}
+	\item Core OS (low level fičury)\pause
+	\begin{itemize}
+	\item Accelerate.framework - image processing, LA, ...\pause
+	\item CoreBluetooth.framework - interakcie s bluetooth a Low energy módom\pause 
+  \end{itemize}	
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Rozpad aplikácie}
+  \begin{itemize}
+	\item má 4 abstraktné vrstvy
+	\begin{itemize}
+	\item Core OS (low level fičury)
+	\item Core service (high level fičury)\pause
+	\begin{itemize}
+	\item iCloud storage\pause
+	\item CoreFoundation framework - práca so stringom, vlákna, kolekcie, ...\pause
+	\item CoreServices framework - accounts.framework, adressbook.framework, core data.framework\pause 
+	\item práca s SQL, XML podpora
+  \end{itemize}
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Rozpad aplikácie}
+  \begin{itemize}
+	\item má 4 abstraktné vrstvy
+	\begin{itemize}
+	\item Core OS (low level fičury)
+	\item Core service (high level fičury)
+	\item Media\pause
+	\begin{itemize}
+	\item Grafika - CoreGraphis, CoreAnimation, OpenGL, ...\pause
+	\item Audio - práca a podpora zvukových formátov AAC, ALAC, ...\pause 
+	\item Video - práca a podpora vizualnych formátov mov, mp4, ...
+  \end{itemize}
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Rozpad aplikácie}
+  \begin{itemize}
+	\item má 4 abstraktné vrstvy
+	\begin{itemize}
+	\item Core OS (low level fičury)
+	\item Core service (high level fičury)
+	\item Media
+	\item Cocoa Touch\pause
+	\begin{itemize}
+	\item základné frameworky pre zostavovanie iOS aplikácií\pause
+	\item accelerometer, kamera, lokalizácia, ...\pause
+	\item podpora klúčových technológií (multi tasking, dotyky, pushky, služby, ...).\pause 
+	\item dôležitý UIKit (ui komponenty), auto layout,  storyboards, ... 
+  \end{itemize}
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Rozpad aplikácie}
+  \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/1/decompose1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Rozpad aplikácie}
+  \begin{figure}[h]
+	\includegraphics[width=0.7\textwidth]{resources/1/decompose2.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - Rozpad aplikácie}
+  \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/1/decompose3.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - SWIFT vs ObjectiveC}
+  \begin{tabularx}{\textwidth}{E{1} E{1}}
+  SWIFT & Objective-C \\
+  \hline\hline
+  friendly syntax & moc urozprávaná syntax \\
+  \hline
+  type inference & od XCode 8 \_\_auto\_type \\
+  \hline
+  nepovinné & vynútené bodko čiarky \\
+  \hline
+  generika ANO & generika ANO od nejakej verzie \\
+  \hline
+  extensions ANO & extensions ANO \\
+  \hline
+  first class funkcie & pointery na funkcie \\
+  \hline
+  bez header súborov & s header súbormi \\
+  \hline
+  práca podobná C\# & práca s pointermi \\   
+  \hline
+  jednoduchá práca so stringom & stringy prefixované zavináčmi \\     
+  \hline
+  vytvorenie objektu konštruktorom Object() & alloc a init \\  
+  \hline   
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prehľad platformy - SWIFT vs ObjectiveC}
+  \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/1/codeswiftobjc.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Príprava na vývoj pre iOS - XCode}
+  \begin{itemize}
+	\item jediné podporované IDE \pause
+	\item obsahuje všetko na kódenie pre iOS (emulátory, testy, developer tooly = najdôležitejší je Instruments)\pause
+	\item buildenie je možné aj mimo IDE, no na archivovanie je nutný tak či tak XCodeBuildTools \pause
+	\item verzia XCode úzko súvisi s SDK
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Príprava na vývoj pre iOS - Emulátor}
+  \begin{itemize}
+	\item základna sada pri inštalácii XCode \pause
+	\item možnosť pridať iné\pause
+	\item v emulatore aj nepodpisane aplikacie\pause
+	\item emulátor je veľmi vernou kópiou skutočného zariadenia (veľmi vierohodne sa dajú simulovať chyby) oproti Androidu \pause
+	\item v emulátore sa dajú simulovať aj také funkcie ako otlačok prstu, shake gesture, rotácia displeja, externý displej, soft klávesnica, ...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Questions ???}
+\end{frame}
+\end{document}

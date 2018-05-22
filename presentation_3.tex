@@ -1,0 +1,399 @@
+\documentclass[serif,mathserif]{beamer}
+\usepackage{amsmath, amsfonts, epsfig, xspace}
+\usepackage{algorithm,algorithmic}
+\usepackage{pstricks,pst-node}
+\usepackage{multimedia}
+\usepackage[normal,tight,center]{subfigure}
+\setlength{\subfigcapskip}{-.5em}
+\usepackage{beamerthemesplit}
+\usepackage{tabularx}
+
+\usepackage[english,czech]{babel}
+\usepackage[T1]{fontenc}
+
+%% Použité kódování znaků: obvykle latin2, cp1250 nebo utf8:
+\usepackage[utf8]{inputenc}
+
+\usetheme{lankton-keynote}
+
+\author[Lukáš Šurín]{Lukáš Šurín}
+
+\title[Štruktúra appky\hspace{2em}\insertframenumber/\inserttotalframenumber]{iOS - Štruktúra appky }
+
+\date{June 2017}
+
+\institute{Profinit}
+
+\newcolumntype{E}[1]{>{\centering\hsize=#1\hsize\arraybackslash}
+X}%
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+  \frametitle{Outline}
+  Prehľad toho čo nás v prezentácii čaká\pause
+  \begin{itemize}
+  \item Zoznámenie s IDE\pause
+  \item Zakladanie nového projektu\pause
+  \item Štruktúra projektu\pause
+   \begin{itemize}
+      \item Projekt\pause
+      \item Target\pause
+      \item Nastavenia targetu\pause
+      \item Nastavenie buildu\pause
+      \item Assety\pause
+      \item UI (xib, storyboard)\pause
+      \item kód\pause
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE2.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE3.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE4.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE5.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=0.60\textwidth]{resources/2/IDE6.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE7.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=0.7\textwidth]{resources/2/IDE8.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE9.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE10.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE11.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE12.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zoznámenie s IDE}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/IDE13.png}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Zakladanie nového projektu}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/newproject1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zakladanie nového projektu}
+  \begin{itemize}
+  \item otvorenie playgroundu = sandboxu, v ktorom sa dajú vyskúšať malé funkčné koncepty\pause
+  \item vytvorenie projektu\pause
+  \item checkout existujúceho projektu\pause
+  \item otvorenie už existujúceho projektu
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zakladanie nového projektu}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/newproject2.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zakladanie nového projektu}
+  \begin{itemize}
+  \item krásny prehľad toho čo všetko XCode dokáže\pause
+  \item XXXApplication - rôzne typy aplikačných šablón\pause
+  \item framework, library\pause
+  \item watchOS, macOS, tvOS, CrossPlatform
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zakladanie nového projektu}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/newproject3.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zakladanie nového projektu}
+  \begin{itemize}
+  \item meno produktu - ako sa bude zobrazovať na zariadení\pause
+  \item voľba teamu - kto a akým spôsobom bude aplikácia vystavená\pause
+  \item názov organizácie - informačný text, ktorý sa zobrazuje v rámci projektu\pause
+  \item identifikátor - prefix pre bundle ID \pause
+  \item bundle identifikátor - unikátny string (povedzme package)\pause
+  \item jazyk - Swift, ObjectiveC\pause
+  \item voľba zariadení - iPhone, iPad, obe\pause
+  \item core data - priama podpora databázového riešenia pre iOS (rovno aj s migračným riešením)\pause
+    \item unit testy a ui testy - vytvorenie nových targetov na rôzne druhy testov
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Projekt}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/project1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Projekt}
+  \begin{itemize}
+  \item spoločné nastavenia pre celý projekt\pause
+  \item funguje tu dedičnosť nastavení
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Target}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/target1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Target}
+  \begin{itemize}
+  \item jemnejšie nastavenie pre konkrétne potreby\pause
+  \item nastavenia overriduju to čo je v projekte\pause
+  \item každý target môže byť podpisovaný iným teamom\pause
+  \item rieši sa tým problémy súvisiace s dodávaním aplikácií od iných firiem (android build type)\pause
+    \item každý vytvorený kód môže alebo nemusí patriť danému targetu\pause
+  \item každý target môže mať ľubovoľne veľa schém (jemnejšie delenie)\pause
+  \item medzi targety patria aj testovacie scenáre
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Nastavenia targetu}
+  \begin{itemize}
+  \item veľa podobného s vytváraním nového projektu\pause
+  \item unikátne bundleID\pause
+  \item verzia, číslo buildu\pause
+  \item zariadenia, orientácie \pause
+  \item ikony a splash obrazovky\pause
+  \item nalinkované knižnice, frameworky
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Nastavenia buildu}
+  \begin{itemize}
+  \item väčšina vecí sa dá nastaviť priamo tu\pause
+  \item dajú sa definovať vlastné konzolové premenné\pause
+  \item architektúra \pause
+  \item vyšperkovanie linkeru, odkiaľ sa berú knižnice, minifikovanie,  \pause
+  \item lepšia administrácia podpisovania \pause
+  \item nastavenie statického analyzovania kódu \pause
+  \item ako sa bude kód optimalizovať \pause
+  \item aká verzia jazyka sa použjie
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Assety}
+  \begin{itemize}
+  \item ikona appky
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Assety}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/assets1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Assety}
+  \begin{itemize}
+  \item ikona appky
+  \item ako aj ostatné obrázky  
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Assety}
+ \begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{resources/2/assets2.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Assety}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/assets3.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - Assety}
+  \begin{itemize}
+  \item ikona appky
+  \item ako aj ostatné obrázky
+  \item nastavenie pre rôzne zariadenia (každé má iné požiadavky 2x, 3x vs 1x, 2x)\pause
+  \item veľkosti treba dodržať\pause
+  \item nie vždy sú nutné všetky tri (závisí na požiadavkách)\pause
+  \item dodanie by mal zaručiť grafik, dizajnér\pause
+  \item k obrázkom sa dajú nastaviť dodatočné možnosti (kvalita renderu, alignment, ...)
+    \item obrázky sú pri spustení v bundloch
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+  \begin{itemize}
+  \item správne miesto nie je predom určené \pause
+  \item xib - jeden view \pause
+  \item storyboard - jeden flow \pause
+  \item vo veľa prípadoch je dobré sa vyhnúť storyboardom (niekedy aj xibom) a siahnuť po definovaní UI v kóde
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+ \begin{figure}[h]
+	\includegraphics[width=0.7\textwidth]{resources/2/UI1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+ \begin{figure}[h]
+	\includegraphics[width=0.8\textwidth]{resources/2/UI2.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+ \begin{figure}[h]
+	\includegraphics[width=0.6\textwidth]{resources/2/UI3.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+ \begin{figure}[h]
+	\includegraphics[width=0.4\textwidth]{resources/2/UI4.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+ \begin{figure}[h]
+	\includegraphics[width=0.4\textwidth]{resources/2/UI5.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+ \begin{figure}[h]
+	\includegraphics[width=0.4\textwidth]{resources/2/UI6.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+ \begin{figure}[h]
+	\includegraphics[width=0.4\textwidth]{resources/2/UI7.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+ \begin{figure}[h]
+	\includegraphics[width=0.4\textwidth]{resources/2/UI8.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - UI (xib, storyboard)}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/2/UI9.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra projektu - kód}
+  \begin{itemize}
+  \item správne miesto nie je predom určené \pause
+  \item dosti závisí od zvolenej architektúry (MVC, MVP, MVVM, VIPER, ...) \pause  
+  \item kód pre lepšiu prehľadnosť v imaginárnych zložkách (v adresári projektu zložky nie sú) \pause
+  \item kód môže byť ako vo SWIFT tak aj v ObjectiveC \pause  
+  \item vytváranie pomocou CMD + N
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Questions ???}
+\end{frame}
+\end{document}

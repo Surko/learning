@@ -1,0 +1,118 @@
+\documentclass[serif,mathserif]{beamer}
+\usepackage{amsmath, amsfonts, epsfig, xspace}
+\usepackage{algorithm,algorithmic}
+\usepackage{pstricks,pst-node}
+\usepackage{multimedia}
+\usepackage[normal,tight,center]{subfigure}
+\setlength{\subfigcapskip}{-.5em}
+\usepackage{beamerthemesplit}
+\usepackage{tabularx}
+
+\usepackage[english,czech]{babel}
+\usepackage[T1]{fontenc}
+
+%% Použité kódování znaků: obvykle latin2, cp1250 nebo utf8:
+\usepackage[utf8]{inputenc}
+
+\usetheme{lankton-keynote}
+
+\author[Lukáš Šurín]{Lukáš Šurín}
+
+\title[Život appky\hspace{2em}\insertframenumber/\inserttotalframenumber]{iOS - Život appky }
+
+\date{June 2017}
+
+\institute{Profinit}
+
+\newcolumntype{E}[1]{>{\centering\hsize=#1\hsize\arraybackslash}
+X}%
+
+\begin{document}
+
+\maketitle
+
+
+\begin{frame}
+  \frametitle{Outline}
+  Prehľad toho čo nás v prezentácii čaká\pause
+  \begin{itemize}
+  \item štruktúra aplikácie a hlavné komponenty\pause
+  \item vykonávanie hlavného cyklu\pause
+  \item stavy aplikácie + životný cyklus\pause
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra aplikácie}
+  \begin{itemize}
+  \item UIApplicationMain funkcia pri štarte\pause
+  \item prichystá klúčové objekty\pause
+  \item v srdci je UIApplication - interakcie medzi systémom a appkou \pause
+  \item základné časti na obrázku   
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra aplikácie}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/3/appstruct1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Štruktúra aplikácie}
+  \begin{itemize}
+  \item UIApplication - managovanie hlavného cyklu, signalizuje svoj delegát o rôznych udalostiach\pause
+  \item AppDelegate - srdce kódu, ktoré píšeme už my \pause
+  \item Model - jednoduché objekty uchovavajúce info o entitách \pause
+  \item ViewController - managovanie toho čo prezentujeme na obrazovke (jedna obrazovka a prechody) \pause
+    \item UIWindow - ma na starosť koordinovanie a prezentovanie obrazoviek, býva väčšinou jeden \pause
+    \item Views a UI - vizuálna reprezentácia obsahu aplikácie, pohlcuje eventy a posiela do controlleru, definované v UIKit
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Vykonávanie hlavného cyklu a udalosti}
+  \begin{itemize}
+  \item spracováva všetky udalosti \pause
+  \item začne pri spustení aplikácie \pause
+  \item spustený na hlavnom vlákne \pause
+  \item pri interakcii vznikajú udalosti, ktoré idu do appky skrze špeciálny port \pause
+    \item udalosti sú zhromaždované vo fronte udalostí \pause
+    \item odtiaľ jeden po druhom sú spracované hlavným cyklom \pause
+    \item medzi udalosti patria dotyky, zatrasenie, accelerometer, gyroskop, lokácia, ... 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Vykonávanie hlavného cyklu a udalosti}
+ \begin{figure}[h]
+	\includegraphics[width=\textwidth]{resources/3/appstruct2.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Stavy aplikácie + životný cyklus}
+  \begin{itemize}
+  \item aplikácia je vždy v každom okamžiku v určitom stave: \pause
+  \item aplikácia nebeží - nebola spustená alebo bola terminovaná \pause
+  \item aplikácia je neaktívna - je v popredí ale nepríjma žiadne udalosti (v takomto stave iba chvílu) \pause
+  \item aplikácia je aktívna - je v popredí a príjma udalosti \pause
+  \item aplikácia je v pozadí -  \pause
+  \item aplikácia je v suspendovaná - nevykonáva sa žiadny kód, pri low memory môže takéto aplikácie odstrániť
+    \item väčšina prechodov sa dá zachytiť v AppDelegate
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Stavy aplikácie + životný cyklus}
+ \begin{figure}[h]
+	\includegraphics[width=0.7\textwidth]{resources/3/appstruct3.png}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Questions ???}
+\end{frame}
+\end{document}
